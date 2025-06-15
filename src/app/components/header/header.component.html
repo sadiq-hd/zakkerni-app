@@ -1,0 +1,190 @@
+<!-- الهيدر المحدث مع التنقل -->
+<header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 shadow-xl border-b border-white/20 sticky top-0 z-50">
+  <div class="container mx-auto px-4">
+    
+    <!-- الشريط الرئيسي -->
+    <div class="flex items-center justify-between py-4">
+      
+      <!-- اللوجو والعنوان -->
+      <div class="flex items-center space-x-4 space-x-reverse">
+        <button routerLink="/" class="flex items-center space-x-4 space-x-reverse hover:scale-105 transition-transform duration-200">
+          <div class="relative">
+            <img src="ذكرني.png" alt="ذكرني" class="h-12 w-16 rounded-xl shadow-lg border-2 border-white/20">
+            <div class="absolute -top-1 -left-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse"></div>
+          </div>
+          <div>
+            <h1 class="text-white text-2xl font-bold tracking-wide">ذكرني</h1>
+            <p class="text-blue-100 text-sm">منظم مهامك الذكي</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- قائمة التنقل للشاشات الكبيرة -->
+      <nav class="hidden md:flex items-center space-x-6 space-x-reverse">
+        
+        <!-- الصفحة الرئيسية -->
+        <a routerLink="/" 
+           routerLinkActive="bg-white/20 scale-105"
+           [routerLinkActiveOptions]="{exact: true}"
+           class="flex items-center px-4 py-2 rounded-xl text-white hover:bg-white/10 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30">
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          الرئيسية
+        </a>
+
+        <!-- إدارة المهام -->
+        <a routerLink="/tasks" 
+           routerLinkActive="bg-white/20 scale-105"
+           class="flex items-center px-4 py-2 rounded-xl text-white hover:bg-white/10 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30">
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+          المهام
+          <span *ngIf="getPendingTasks() > 0" 
+                class="mr-2 px-2 py-1 bg-orange-500 text-white text-xs rounded-full animate-pulse">
+            {{ getPendingTasks() }}
+          </span>
+        </a>
+
+        <!-- إضافة مهمة -->
+        <a routerLink="/add-task" 
+           routerLinkActive="bg-white/20 scale-105"
+           class="flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl text-white transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400 shadow-lg">
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+          </svg>
+          إضافة مهمة
+        </a>
+
+        <!-- الإحصائيات -->
+        <a routerLink="/statistics" 
+           routerLinkActive="bg-white/20 scale-105"
+           class="flex items-center px-4 py-2 rounded-xl text-white hover:bg-white/10 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30">
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+          الإحصائيات
+        </a>
+      </nav>
+
+      <!-- معلومات سريعة للشاشات الكبيرة -->
+      <div class="hidden lg:flex items-center space-x-6 space-x-reverse text-blue-100 text-sm">
+        <div class="flex items-center space-x-2 space-x-reverse">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>{{ getTodayCompletedTasks() }} مكتملة اليوم</span>
+        </div>
+        
+        <div class="flex items-center space-x-2 space-x-reverse">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.415L11 9.586V6z" clip-rule="evenodd"/>
+          </svg>
+          <span>{{ getPendingTasks() }} متبقية</span>
+        </div>
+
+        <div class="flex items-center space-x-2 space-x-reverse">
+          <span>{{ getCurrentTime() }}</span>
+        </div>
+      </div>
+
+      <!-- زر القائمة للهاتف المحمول -->
+      <div class="md:hidden">
+        <button 
+          (click)="toggleMobileMenu()"
+          class="p-2 text-white hover:bg-white/10 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/30">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- قائمة الهاتف المحمول -->
+  <div *ngIf="isMobileMenuOpen()" 
+       class="md:hidden bg-black/20 backdrop-blur-sm border-t border-white/10 animate-fade-in">
+    <div class="container mx-auto px-4 py-4">
+      
+      <!-- روابط التنقل للموبايل -->
+      <nav class="space-y-3">
+        
+        <!-- الصفحة الرئيسية -->
+        <a routerLink="/" 
+           (click)="closeMobileMenu()"
+           routerLinkActive="bg-white/20"
+           [routerLinkActiveOptions]="{exact: true}"
+           class="flex items-center w-full px-4 py-3 text-white hover:bg-white/10 rounded-xl transition-all duration-200">
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          الصفحة الرئيسية
+        </a>
+
+        <!-- إدارة المهام -->
+        <a routerLink="/tasks" 
+           (click)="closeMobileMenu()"
+           routerLinkActive="bg-white/20"
+           class="flex items-center justify-between w-full px-4 py-3 text-white hover:bg-white/10 rounded-xl transition-all duration-200">
+          <div class="flex items-center">
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+            إدارة المهام
+          </div>
+          <span *ngIf="getPendingTasks() > 0" 
+                class="px-2 py-1 bg-orange-500 text-white text-xs rounded-full">
+            {{ getPendingTasks() }}
+          </span>
+        </a>
+
+        <!-- إضافة مهمة -->
+        <a routerLink="/add-task" 
+           (click)="closeMobileMenu()"
+           routerLinkActive="bg-green-600"
+           class="flex items-center w-full px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl transition-all duration-200 shadow-lg">
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+          </svg>
+          إضافة مهمة جديدة
+        </a>
+
+        <!-- الإحصائيات -->
+        <a routerLink="/statistics" 
+           (click)="closeMobileMenu()"
+           routerLinkActive="bg-white/20"
+           class="flex items-center w-full px-4 py-3 text-white hover:bg-white/10 rounded-xl transition-all duration-200">
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+          الإحصائيات والتحليلات
+        </a>
+      </nav>
+
+      <!-- معلومات سريعة للموبايل -->
+      <div class="mt-6 pt-4 border-t border-white/20">
+        <div class="grid grid-cols-2 gap-4 text-blue-100 text-sm">
+          <div class="flex items-center space-x-2 space-x-reverse">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span>{{ getTodayCompletedTasks() }} مكتملة</span>
+          </div>
+          
+          <div class="flex items-center space-x-2 space-x-reverse">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.415L11 9.586V6z" clip-rule="evenodd"/>
+            </svg>
+            <span>{{ getPendingTasks() }} متبقية</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- مؤشر التحميل -->
+  <div *ngIf="isLoading()" class="absolute bottom-0 left-0 right-0 h-1 bg-white/20 overflow-hidden">
+    <div class="h-full bg-gradient-to-r from-yellow-400 to-orange-500 animate-pulse"></div>
+  </div>
+</header>

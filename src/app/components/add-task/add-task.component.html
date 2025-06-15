@@ -1,0 +1,212 @@
+<!-- البطاقة الرئيسية -->
+<div class="bg-gradient-to-br from-white to-blue-50 rounded-3xl shadow-2xl border border-blue-100 overflow-hidden max-w-2xl mx-auto">
+  <!-- الهيدر -->
+  <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-8 text-white text-center relative">
+    <div class="relative z-10">
+      <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+        </svg>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">إضافة مهمة جديدة</h2>
+      <p class="text-blue-100">قم بإنشاء مهمة جديدة وتنظيم أعمالك بكفاءة</p>
+    </div>
+    <!-- تأثيرات بصرية -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <div class="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+      <div class="absolute bottom-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+    </div>
+  </div>
+  
+  <!-- النموذج -->
+  <div class="p-8">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <!-- عنوان المهمة -->
+      <div class="group">
+        <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">
+          <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+          </svg>
+          عنوان المهمة *
+        </label>
+        <div class="relative">
+          <input 
+            type="text" 
+            id="title" 
+            formControlName="title"
+            class="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 focus:bg-white transition-all duration-300 text-gray-900 placeholder-gray-400 hover:border-gray-300"
+            placeholder="مثال: مراجعة التقرير الشهري"
+            dir="rtl"
+          >
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+            </svg>
+          </div>
+        </div>
+        <div *ngIf="taskForm.get('title')?.invalid && (taskForm.get('title')?.dirty || taskForm.get('title')?.touched)" 
+             class="text-red-500 text-sm mt-2 flex items-center animate-pulse">
+          <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+          </svg>
+          العنوان مطلوب
+        </div>
+      </div>
+      
+      <!-- الوصف -->
+      <div class="group">
+        <label for="description" class="block text-sm font-semibold text-gray-700 mb-2">
+          <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+          </svg>
+          الوصف (اختياري)
+        </label>
+        <textarea 
+          id="description" 
+          formControlName="description"
+          rows="4"
+          class="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 focus:bg-white transition-all duration-300 text-gray-900 placeholder-gray-400 resize-none hover:border-gray-300"
+          placeholder="أضف تفاصيل إضافية عن المهمة..."
+          dir="rtl"
+        ></textarea>
+      </div>
+      
+      <!-- الأولوية والتاريخ في صف واحد -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- الأولوية -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-3">
+            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/>
+            </svg>
+            مستوى الأولوية
+          </label>
+          <div class="space-y-3">
+            <!-- أولوية منخفضة -->
+            <label class="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl cursor-pointer transition-all hover:shadow-md hover:scale-105 hover:border-green-300">
+              <input 
+                type="radio" 
+                value="low" 
+                formControlName="priority"
+                class="w-4 h-4 text-green-600 border-green-300 focus:ring-green-500 focus:ring-2"
+              >
+              <div class="mr-4 flex-1">
+                <div class="font-medium text-green-800">منخفضة</div>
+                <div class="text-xs text-green-600">يمكن تأجيلها</div>
+              </div>
+              <div class="w-3 h-3 bg-green-400 rounded-full shadow-sm"></div>
+            </label>
+            
+            <!-- أولوية متوسطة -->
+            <label class="flex items-center p-4 bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-200 rounded-xl cursor-pointer transition-all hover:shadow-md hover:scale-105 hover:border-yellow-300">
+              <input 
+                type="radio" 
+                value="medium" 
+                formControlName="priority"
+                class="w-4 h-4 text-yellow-600 border-yellow-300 focus:ring-yellow-500 focus:ring-2"
+              >
+              <div class="mr-4 flex-1">
+                <div class="font-medium text-yellow-800">متوسطة</div>
+                <div class="text-xs text-yellow-600">مهمة عادية</div>
+              </div>
+              <div class="w-3 h-3 bg-yellow-400 rounded-full shadow-sm"></div>
+            </label>
+            
+            <!-- أولوية عالية -->
+            <label class="flex items-center p-4 bg-gradient-to-r from-red-50 to-rose-50 border-2 border-red-200 rounded-xl cursor-pointer transition-all hover:shadow-md hover:scale-105 hover:border-red-300">
+              <input 
+                type="radio" 
+                value="high" 
+                formControlName="priority"
+                class="w-4 h-4 text-red-600 border-red-300 focus:ring-red-500 focus:ring-2"
+              >
+              <div class="mr-4 flex-1">
+                <div class="font-medium text-red-800">عالية</div>
+                <div class="text-xs text-red-600">مستعجلة جداً</div>
+              </div>
+              <div class="w-3 h-3 bg-red-400 rounded-full shadow-sm"></div>
+            </label>
+          </div>
+        </div>
+        
+        <!-- تاريخ الاستحقاق -->
+        <div>
+          <label for="dueDate" class="block text-sm font-semibold text-gray-700 mb-3">
+            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            تاريخ الاستحقاق
+          </label>
+          <div class="relative">
+            <input 
+              type="date"
+              id="dueDate" 
+              formControlName="dueDate"
+              class="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 focus:bg-white transition-all duration-300 text-gray-900 hover:border-gray-300"
+            >
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="mt-2 text-xs text-gray-500 flex items-center">
+            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+            اتركه فارغاً إذا لم يكن هناك تاريخ محدد
+          </div>
+        </div>
+      </div>
+      
+      <!-- أزرار الإجراءات -->
+      <div class="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-100">
+        <button 
+          type="submit" 
+          [disabled]="taskForm.invalid"
+          class="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl disabled:hover:scale-100 disabled:hover:shadow-none focus:outline-none focus:ring-4 focus:ring-blue-300 flex items-center justify-center space-x-2 space-x-reverse"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+          </svg>
+          <span>إضافة المهمة</span>
+        </button>
+        
+        <button 
+          type="button" 
+          (click)="resetForm()"
+          class="sm:w-auto bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-4 px-6 rounded-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300 flex items-center justify-center hover:shadow-md"
+        >
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+          <span>إعادة تعيين</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- نصائح مفيدة -->
+<div class="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 max-w-2xl mx-auto">
+  <h3 class="font-semibold text-blue-900 mb-4 flex items-center">
+    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>
+    نصائح لإدارة المهام بفعالية
+  </h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="flex items-start space-x-3 space-x-reverse">
+      <div class="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+      <span class="text-blue-800 text-sm">استخدم عناوين واضحة ومحددة</span>
+    </div>
+    <div class="flex items-start space-x-3 space-x-reverse">
+      <div class="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+      <span class="text-blue-800 text-sm">حدد الأولوية بناءً على الأهمية</span>
+    </div>
+    <div class="flex items-start space-x-3 space-x-reverse">
+      <div class="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+      <span class="text-blue-800 text-sm">أضف وصفاً للمهام المعقدة</span>
+    </div>
+  </div>
+</div>

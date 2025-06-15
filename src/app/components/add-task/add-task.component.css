@@ -1,0 +1,11 @@
+:host {
+    display: block;
+  }
+  
+  form {
+    direction: rtl;
+  }
+  
+  select option {
+    direction: rtl;
+  }

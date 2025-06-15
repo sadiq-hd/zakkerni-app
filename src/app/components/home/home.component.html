@@ -1,0 +1,245 @@
+
+<!-- الصفحة الرئيسية -->
+<div class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100">
+  <div class="container mx-auto px-4 py-8 max-w-7xl">
+    
+    <!-- القسم الترحيبي -->
+    <section class="text-center mb-12">
+      <div class="relative">
+        <!-- تأثيرات خلفية -->
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-blue-200/30 rounded-full blur-2xl"></div>
+        <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-200/30 rounded-full blur-3xl"></div>
+        
+        <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl shadow-xl border border-white/30 p-12">
+          <!-- اللوجو والترحيب -->
+          <div class="mb-8">
+            <div class="w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+            </div>
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">مرحباً بك في ذكرني</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              منظم مهامك الذكي لحياة أكثر إنتاجية وتنظيماً
+            </p>
+          </div>
+
+          <!-- أزرار الإجراءات السريعة -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button 
+              routerLink="/add-task"
+              class="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 flex items-center">
+              <svg class="w-6 h-6 ml-2 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+              </svg>
+              إضافة مهمة جديدة
+            </button>
+            
+            <button 
+              routerLink="/tasks"
+              class="group bg-white hover:bg-gray-50 text-gray-800 px-8 py-4 rounded-2xl font-semibold text-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 flex items-center">
+              <svg class="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+              عرض جميع المهام
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- نظرة عامة سريعة -->
+    <section class="mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- إحصائيات سريعة -->
+        <div class="md:col-span-2">
+          <div class="bg-white/70 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-8">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+                <svg class="w-6 h-6 ml-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+                نظرة سريعة
+              </h2>
+              <button 
+                routerLink="/statistics"
+                class="text-blue-600 hover:text-blue-700 text-sm font-medium hover:underline">
+                عرض التفاصيل
+              </button>
+            </div>
+
+            <!-- الإحصائيات -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- إجمالي المهام -->
+              <div class="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl border border-blue-200 hover:scale-105 transition-transform duration-300">
+                <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                  </svg>
+                </div>
+                <p class="text-2xl font-bold text-blue-600">{{ getTotalTasks() }}</p>
+                <p class="text-sm text-blue-700 font-medium">إجمالي المهام</p>
+              </div>
+
+              <!-- المكتملة -->
+              <div class="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl border border-green-200 hover:scale-105 transition-transform duration-300">
+                <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <p class="text-2xl font-bold text-green-600">{{ getCompletedTasks() }}</p>
+                <p class="text-sm text-green-700 font-medium">مكتملة</p>
+              </div>
+
+              <!-- المتبقية -->
+              <div class="text-center p-4 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border border-orange-200 hover:scale-105 transition-transform duration-300">
+                <div class="w-12 h-12 bg-orange-600 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <p class="text-2xl font-bold text-orange-600">{{ getPendingTasks() }}</p>
+                <p class="text-sm text-orange-700 font-medium">متبقية</p>
+              </div>
+
+              <!-- المتأخرة -->
+              <div class="text-center p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl border border-red-200 hover:scale-105 transition-transform duration-300"
+                   [class.animate-pulse]="getOverdueTasks() > 0">
+                <div class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                  </svg>
+                </div>
+                <p class="text-2xl font-bold text-red-600">{{ getOverdueTasks() }}</p>
+                <p class="text-sm text-red-700 font-medium">متأخرة</p>
+              </div>
+            </div>
+
+            <!-- شريط التقدم -->
+            <div class="mt-6 pt-6 border-t border-gray-200">
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-lg font-semibold text-gray-800">التقدم اليومي</span>
+                <span class="text-2xl font-bold text-blue-600">{{ getCompletionPercentage() }}%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden shadow-inner">
+                <div class="bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 h-4 rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
+                     [style.width.%]="getCompletionPercentage()">
+                  <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- الإجراءات السريعة -->
+        <div class="space-y-6">
+          <!-- مهام اليوم -->
+          <div class="bg-white/70 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+              <svg class="w-5 h-5 ml-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              مهام اليوم
+            </h3>
+            
+            <!-- المهام الحديثة -->
+            <div class="space-y-3">
+              <div *ngFor="let task of getRecentTasks(); let i = index" 
+                   class="flex items-center p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-200">
+                <div [class]="getTaskPriorityDot(task.priority)" class="w-3 h-3 rounded-full ml-3"></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-gray-800 truncate">{{ task.title }}</p>
+                  <p class="text-xs text-gray-500">{{ getTaskTimeLeft(task) }}</p>
+                </div>
+                <div [class]="getTaskStatusIcon(task)" class="w-4 h-4">
+                  <svg *ngIf="task.completed" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <svg *ngIf="!task.completed" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- رسالة فارغة -->
+              <div *ngIf="getRecentTasks().length === 0" class="text-center py-6">
+                <svg class="w-12 h-12 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
+                </svg>
+                <p class="text-sm text-gray-500">لا توجد مهام لليوم</p>
+              </div>
+
+              <!-- زر عرض المزيد -->
+              <button 
+                routerLink="/tasks"
+                class="w-full mt-4 text-center py-2 text-blue-600 hover:text-blue-700 text-sm font-medium hover:bg-blue-50 rounded-lg transition-colors duration-200">
+                عرض جميع المهام
+              </button>
+            </div>
+          </div>
+
+          <!-- نصيحة اليوم -->
+          <div class="bg-gradient-to-br from-purple-100 to-pink-100 rounded-3xl shadow-lg border border-purple-200 p-6">
+            <h3 class="text-xl font-bold text-purple-800 mb-3 flex items-center">
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
+              نصيحة اليوم
+            </h3>
+            <p class="text-purple-700 text-sm leading-relaxed">
+              {{ getDailyTip() }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section class="mt-16 text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-12">لماذا ذكرني؟</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- ميزة 1 -->
+        <div class="bg-white/70 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-8 hover:scale-105 transition-transform duration-300">
+          <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4">سريع وبسيط</h3>
+          <p class="text-gray-600 leading-relaxed">
+            إضافة وإدارة المهام بسهولة وسرعة فائقة مع واجهة بسيطة ومفهومة
+          </p>
+        </div>
+
+        <!-- ميزة 2 -->
+        <div class="bg-white/70 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-8 hover:scale-105 transition-transform duration-300">
+          <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4">تتبع ذكي</h3>
+          <p class="text-gray-600 leading-relaxed">
+            إحصائيات تفصيلية وتتبع التقدم لتحسين إنتاجيتك باستمرار
+          </p>
+        </div>
+
+        <!-- ميزة 3 -->
+        <div class="bg-white/70 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 p-8 hover:scale-105 transition-transform duration-300">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4">تذكير تلقائي</h3>
+          <p class="text-gray-600 leading-relaxed">
+            لن تفوت أي مهمة مع نظام التذكير الذكي وتنبيهات المواعيد النهائية
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
