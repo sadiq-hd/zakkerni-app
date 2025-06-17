@@ -1,12 +1,14 @@
 [build]
-  command = "npm run build"
+  command = "ng build --configuration production"
   publish = "dist/zakkerni-app/browser"
 
 [build.environment]
   NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
-[[plugins]]
-  package = "@netlify/plugin-angular-universal"
+# شيلي الـ plugin هذا أو بدليه
+# [[plugins]]
+#   package = "@netlify/plugin-angular-universal"
 
 [build.processing]
   skip_processing = false
@@ -25,10 +27,10 @@
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Disable Angular Universal for problematic routes
+# إعادة توجيه للـ SPA
 [[redirects]]
-  from = "/tasks"
-  to = "/tasks"
+  from = "/*"
+  to = "/index.html"
   status = 200
-  force = false
