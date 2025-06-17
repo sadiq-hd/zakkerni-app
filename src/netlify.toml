@@ -1,25 +1,14 @@
 [build]
-  command = "ng build --configuration production"
-  publish = "dist/zakkerni-app/browser"
+  command = "ng build --configuration production --output-path=dist"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
 
-# شيلي الـ plugin هذا أو بدليه
-# [[plugins]]
-#   package = "@netlify/plugin-angular-universal"
-
+# منع Angular SSR تماماً
 [build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
+  skip_processing = true
 
 [[headers]]
   for = "/*"
@@ -27,9 +16,8 @@
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
 
-# إعادة توجيه للـ SPA
+# SPA redirect
 [[redirects]]
   from = "/*"
   to = "/index.html"
